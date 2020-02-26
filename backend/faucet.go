@@ -3,10 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/dpapathanasiou/go-recaptcha"
-	"github.com/joho/godotenv"
-	"github.com/tendermint/tmlibs/bech32"
-	"github.com/tomasen/realip"
 	"io"
 	"log"
 	"net/http"
@@ -14,6 +10,11 @@ import (
 	"os/exec"
 	"strings"
 	"time"
+
+	"github.com/dpapathanasiou/go-recaptcha"
+	"github.com/joho/godotenv"
+	"github.com/tendermint/tmlibs/bech32"
+	"github.com/tomasen/realip"
 )
 
 var chain string
@@ -43,7 +44,7 @@ func getEnv(key string) string {
 func main() {
 	err := godotenv.Load(".env.local", ".env")
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal("Error loading .env file", err)
 	}
 
 	chain = getEnv("FAUCET_CHAIN")
