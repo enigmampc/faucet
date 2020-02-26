@@ -31,7 +31,8 @@ vi .env.local
 Then build the backend.
 
 ```
-dep ensure
+go mod init github.com/enigmampc/faucet/backend
+go mod tidy
 go build faucet.go
 ```
 
