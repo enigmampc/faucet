@@ -142,18 +142,18 @@ func getCoinsHandler(w http.ResponseWriter, request *http.Request) {
 	// send the coins!
 	if captchaPassed {
 		sendFaucet := fmt.Sprintf(
-			"enigmacli send --to=%v --name=%v --chain-id=%v --amount=%v",
-			encodedAddress, key, chain, amountFaucet)
+			"enigmacli tx send %v %v %v --chain-id=%v",
+			key, encodedAddress, amountFaucet, chain)
 		fmt.Println(time.Now().UTC().Format(time.RFC3339), encodedAddress, "[1]")
 		executeCmd(sendFaucet, pass)
 
-		time.Sleep(5 * time.Second)
+		// time.Sleep(5 * time.Second)
 
-		sendSteak := fmt.Sprintf(
-			"enigmacli send --to=%v --name=%v --chain-id=%v --amount=%v",
-			encodedAddress, key, chain, amountSteak)
-		fmt.Println(time.Now().UTC().Format(time.RFC3339), encodedAddress, "[2]")
-		executeCmd(sendSteak, pass)
+		// sendSteak := fmt.Sprintf(
+		// 	"enigmacli tx send %v %v %v --chain-id=%v",
+		// 	key, encodedAddress, chain, amountSteak)
+		// fmt.Println(time.Now().UTC().Format(time.RFC3339), encodedAddress, "[2]")
+		// executeCmd(sendSteak, pass)
 	}
 
 	return
