@@ -142,7 +142,7 @@ func getCoinsHandler(w http.ResponseWriter, request *http.Request) {
 	// send the coins!
 	if captchaPassed {
 		sendFaucet := fmt.Sprintf(
-			"enigmacli tx send %v %v %v --chain-id=%v",
+			"enigmacli tx send %v %v %v --chain-id=%v -y",
 			key, encodedAddress, amountFaucet, chain)
 		fmt.Println(time.Now().UTC().Format(time.RFC3339), encodedAddress, "[1]")
 		executeCmd(sendFaucet, pass)
