@@ -3,3 +3,5 @@ vendor
 .DS_Store
 backend/faucet
 backend/.env.local
+*/__debug_bin
+.vscode
