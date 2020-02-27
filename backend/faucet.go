@@ -24,9 +24,9 @@ var amountSteak string
 var key string
 var pass string
 var node string
-var publicUrl string
+var publicURL string
 
-type claim_struct struct {
+type claimStruct struct {
 	Address  string
 	Response string
 }
@@ -35,10 +35,10 @@ func getEnv(key string) string {
 	if value, ok := os.LookupEnv(key); ok {
 		fmt.Println(key, "=", value)
 		return value
-	} else {
-		log.Fatal("Error loading environment variable: ", key)
-		return ""
 	}
+
+	log.Fatal("Error loading environment variable: ", key)
+	return ""
 }
 
 func main() {
@@ -54,13 +54,13 @@ func main() {
 	key = getEnv("FAUCET_KEY")
 	pass = getEnv("FAUCET_PASS")
 	node = getEnv("FAUCET_NODE")
-	publicUrl = getEnv("FAUCET_PUBLIC_URL")
+	publicURL = getEnv("FAUCET_PUBLIC_URL")
 
 	recaptcha.Init(recaptchaSecretKey)
 
 	http.HandleFunc("/claim", getCoinsHandler)
 
-	if err := http.ListenAndServe(publicUrl, nil); err != nil {
+	if err := http.ListenAndServe(publicURL, nil); err != nil {
 		log.Fatal("failed to start server", err)
 	}
 }
@@ -98,7 +98,7 @@ func getCmd(command string) *exec.Cmd {
 }
 
 func getCoinsHandler(w http.ResponseWriter, request *http.Request) {
-	var claim claim_struct
+	var claim claimStruct
 
 	w.Header().Add("Access-Control-Allow-Origin", "*")
 	w.Header().Add("Access-Control-Allow-Headers", "*")
