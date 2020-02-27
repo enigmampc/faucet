@@ -58,6 +58,9 @@ func main() {
 
 	recaptcha.Init(recaptchaSecretKey)
 
+	fs := http.FileServer(http.Dir("dist"))
+	http.Handle("/", fs)
+
 	http.HandleFunc("/claim", getCoinsHandler)
 
 	if err := http.ListenAndServe(publicURL, nil); err != nil {
