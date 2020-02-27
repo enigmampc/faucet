@@ -100,6 +100,19 @@ func getCmd(command string) *exec.Cmd {
 func getCoinsHandler(w http.ResponseWriter, request *http.Request) {
 	var claim claim_struct
 
+	w.Header().Add("Access-Control-Allow-Origin", "*")
+	w.Header().Add("Access-Control-Allow-Headers", "*")
+
+	if request.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
+	if request.Method != http.MethodPost {
+		http.Error(w, "Only POST allowed.", http.StatusBadRequest)
+		return
+	}
+
 	// decode JSON response from front end
 	decoder := json.NewDecoder(request.Body)
 	decoderErr := decoder.Decode(&claim)

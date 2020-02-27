@@ -13,5 +13,8 @@ module.exports = {
       .test(/\.pdf/)
       .use("")
       .loader("file-loader");
+  },
+  configureWebpack: {
+    devtool: "source-map"
   }
 };
