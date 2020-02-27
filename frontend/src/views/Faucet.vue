@@ -38,8 +38,8 @@ import Field from "@nylira/vue-field";
 import FormGroup from "../components/NiFormGroup";
 import FormMsg from "../components/NiFormMsg";
 import FaucetHeader from "../components/FaucetHeader";
-import SectionJoin from "../components/SectionJoin.vue";
-import SectionLinks from "../components/SectionLinks.vue";
+// import SectionJoin from "../components/SectionJoin.vue";
+// import SectionLinks from "../components/SectionLinks.vue";
 export default {
   name: "faucet",
   components: {
@@ -48,8 +48,8 @@ export default {
     FormGroup,
     FaucetHeader,
     FormMsg,
-    SectionJoin,
-    SectionLinks,
+    // SectionJoin,
+    // SectionLinks,
     VueRecaptcha
   },
   computed: {

@@ -5,9 +5,10 @@
     .left
       .key testnet:
       .value {{ config.chain }}
-    .right
-      a(href="https://explorecosmos.network" target="_blank") explorer #[i.material-icons assessment]
-  img(src="~assets/brandmark.png" width="512" height="512")
+    //- .right
+    //-   a(href="https://explorecosmos.network" target="_blank") explorer #[i.material-icons assessment]
+  //- .logo
+  //-   img(src="~assets/logo.png" width="270" height="311")
   router-view
   notifications(:notifications='notifications' theme='cosmos')
   #bottom &copy; 2018 Interchain Foundation
