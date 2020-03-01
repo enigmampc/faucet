@@ -6,3 +6,4 @@ backend/.env.local
 */__debug_bin
 .vscode
 /bin
+bin.*
